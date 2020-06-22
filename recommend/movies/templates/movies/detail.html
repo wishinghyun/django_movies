@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block body %}
+<br>
+<div class="container" style="width: 800px;">
+  <div class="row">
+    <div class="col-7" style="padding-top: 25px;">
+      <h1>{{ movie.title }}</h1>
+      <h5>{{ movie.title_en }}</h5>
+      <h4>장르 : {{ movie.genre }}</h4>
+      <h4>개봉일 : {{ movie.open_date }}</h4>
+      <h4>누적 관객 수 : {{ movie.audience }}명</h4>
+      <h4>평점 : {{ movie.score }}</h4>
+      <h4>등급 : {{movie.watch_grade }}</h4>
+    </div>
+    <div class="col" style="text-align: center;">
+      <img src="{{ movie.poster_url }}" alt="포스터" width="300" height=" 400">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <h3>줄거리</h3>
+      <h6>{{ movie.description }}</h6>
+    </div>
+  </div>
+  <div class="row" style="float: right;">
+    <a href="{% url 'movies:index' %}" class="btn btn-info" style="margin-right: 10px;">목록보기</a>
+    <a href="{% url 'movies:edit' movie.pk %}" class="btn btn-warning" style="margin-right: 10px;">수정하기</a>
+    <a href="{% url 'movies:delete' movie.pk %}" class="btn btn-danger" style="margin-right: 10px;">삭제하기</a>
+  </div>
+</div>
+
+
+{% endblock %}
